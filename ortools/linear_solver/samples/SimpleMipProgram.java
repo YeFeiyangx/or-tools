@@ -33,6 +33,7 @@ public final class SimpleMipProgram {
       System.out.println("Could not create solver SCIP");
       return;
     }
+    try {
     // [END solver]
 
     // [START variables]
@@ -82,11 +83,16 @@ public final class SimpleMipProgram {
     // [END print_solution]
 
     // [START advanced]
+    // [START advanced]
     System.out.println("\nAdvanced usage:");
     System.out.println("Problem solved in " + solver.wallTime() + " milliseconds");
     System.out.println("Problem solved in " + solver.iterations() + " iterations");
     System.out.println("Problem solved in " + solver.nodes() + " branch-and-bound nodes");
     // [END advanced]
+    } finally {
+      // Clean up native resources
+      solver.delete();
+    }
   }
 
   private SimpleMipProgram() {}
