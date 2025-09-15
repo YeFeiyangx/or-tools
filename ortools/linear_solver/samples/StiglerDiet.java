@@ -201,6 +201,7 @@ public final class StiglerDiet {
       System.out.println("Could not create solver GLOP");
       return;
     }
+    try {
     // [END solver]
 
     // [START variables]
@@ -274,6 +275,10 @@ public final class StiglerDiet {
     System.out.println("Problem solved in " + solver.wallTime() + " milliseconds");
     System.out.println("Problem solved in " + solver.iterations() + " iterations");
     // [END advanced]
+    } finally {
+      // Clean up native resources
+      solver.delete();
+    }
   }
 
   private StiglerDiet() {}

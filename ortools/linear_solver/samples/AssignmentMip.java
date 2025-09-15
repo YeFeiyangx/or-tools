@@ -46,6 +46,7 @@ public class AssignmentMip {
       System.out.println("Could not create solver SCIP");
       return;
     }
+    try {
     // [END solver]
 
     // Variables
@@ -114,6 +115,10 @@ public class AssignmentMip {
       System.err.println("No solution found.");
     }
     // [END print_solution]
+    } finally {
+      // Clean up native resources
+      solver.delete();
+    }
   }
 
   private AssignmentMip() {}

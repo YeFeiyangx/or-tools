@@ -28,6 +28,7 @@ public final class LinearProgrammingExample {
     // [START solver]
     MPSolver solver = MPSolver.createSolver("GLOP");
     // [END solver]
+    try {
 
     // [START variables]
     double infinity = java.lang.Double.POSITIVE_INFINITY;
@@ -83,6 +84,10 @@ public final class LinearProgrammingExample {
     System.out.println("Problem solved in " + solver.wallTime() + " milliseconds");
     System.out.println("Problem solved in " + solver.iterations() + " iterations");
     // [END advanced]
+    } finally {
+      // Clean up native resources
+      solver.delete();
+    }
   }
 
   private LinearProgrammingExample() {}

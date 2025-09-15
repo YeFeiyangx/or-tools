@@ -40,6 +40,7 @@ public final class BasicExample {
       System.out.println("Could not create solver GLOP");
       return;
     }
+    try {
     // [END solver]
 
     // [START variables]
@@ -96,6 +97,12 @@ public final class BasicExample {
     System.out.println("Problem solved in " + solver.wallTime() + " milliseconds");
     System.out.println("Problem solved in " + solver.iterations() + " iterations");
     // [END advanced]
+    } finally {
+      // [START cleanup]
+      // Clean up native resources
+      solver.delete();
+      // [END cleanup]
+    }
   }
 
   private BasicExample() {}

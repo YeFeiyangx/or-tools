@@ -33,6 +33,7 @@ public final class SimpleLpProgram {
       System.out.println("Could not create solver SCIP");
       return;
     }
+    try {
     // [END solver]
 
     // [START variables]
@@ -86,6 +87,10 @@ public final class SimpleLpProgram {
     System.out.println("Problem solved in " + solver.wallTime() + " milliseconds");
     System.out.println("Problem solved in " + solver.iterations() + " iterations");
     // [END advanced]
+    } finally {
+      // Clean up native resources
+      solver.delete();
+    }
   }
 
   private SimpleLpProgram() {}

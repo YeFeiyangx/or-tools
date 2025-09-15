@@ -35,6 +35,7 @@ public class StiglerMIP {
     MPSolver solver = MPSolver.createSolver(solverType);
     if (solver == null)
       return;
+    try {
 
     double infinity = MPSolver.infinity();
 
@@ -217,6 +218,10 @@ public class StiglerMIP {
         System.out.println(commodities[i] + ": " + df.format(xCost[i].solutionValue()) + " "
             + df.format(quant[i].solutionValue()));
       }
+    }
+    } finally {
+      // Clean up native resources
+      solver.delete();
     }
   }
 
